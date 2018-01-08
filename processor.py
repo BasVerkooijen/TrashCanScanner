@@ -21,7 +21,10 @@ else:
 	print "Usage:\r\nprocessor.py [video dev source] [grocery list id] [enable preview]\r\n\r\nTest: processor.py /dev/video0 2 False\r\n-h\t This help :)"
 	quit()
 
-proc.init(device)
+if preview_visible != 'False':
+	proc.init(device)
+else:
+	proc.init(device, False)
 
 # setup a callback
 def my_handler(proc, image, closure):
