@@ -32,6 +32,7 @@ def my_handler(proc, image, closure):
 			print 'Found product \''"%s"'\'' % product
 			print 'Adding \''"%s"'\' to your shopping list' % product
 			addToShoppingList( grocery_list_id, symbol.data, 1 )
+			print 'Added - OK'
 		else:
 			print 'Unknown product'
 
