@@ -12,11 +12,13 @@ proc.parse_config('enable')
 # initialize the Processor and Grocery list
 device = '/dev/video0'
 grocery_list_id = '2'
-if len(argv) == 3:
+preview_visible = False
+if len(argv) == 4:
 	device = argv[1]
 	grocery_list_id = argv[2]
+	preview_visible = argv[3]
 else:
-	print "Usage:\r\nprocessor.py [video dev source] [grocery list id]\r\n\r\nTest: processor.py /dev/video0 2\r\n-h\t This help :)"
+	print "Usage:\r\nprocessor.py [video dev source] [grocery list id] [enable preview]\r\n\r\nTest: processor.py /dev/video0 2 False\r\n-h\t This help :)"
 	quit()
 
 proc.init(device)
@@ -39,7 +41,10 @@ def my_handler(proc, image, closure):
 proc.set_data_handler(my_handler)
 
 # enable the preview window
-proc.visible = True
+if preview_visible == 'True':
+	proc.visible = True
+else:
+	proc.visible = False
 
 # initiate scanning
 proc.active = True
